@@ -2,7 +2,8 @@
 
 # Домашнее задание к лекции «Классы, наследование»
 
-about classes and inheritance
+[![Build status](https://ci.appveyor.com/api/projects/status/4du3to3187unc1mc/branch/main?svg=true)](https://ci.appveyor.com/project/marinaustinovich/ajs-homeworks-oop/branch/main)
+
 
 **Важно**: код должен проходить ESLint без ошибок.
 
@@ -67,3 +68,5 @@ about classes and inheritance
 Реализуйте в класса `Character` метод `damage(points)`, который меняет внутреннее состояние объекта (`points` -  это урон, наносимый персонажу). Метод `damage(points)` ничего не возвращает и рассчитывает итоговое изменение жизни персонажа (`health`) по формуле: `health -= points * (1 - defence / 100)`, учитывая, что значение `health >= 0`.
 
 Не забудьте написать unit-тесты, которые обеспечивают 100% покрытие функций и классов, которые вы тестируете.
+=======
+
