@@ -1,57 +1,25 @@
 import createUsers from '../app';
 
+const types = [
+  ['Bowerman', 25, 25],
+  ['Swordsman', 40, 10],
+  ['Magician', 10, 40],
+  ['Daemon', 10, 40],
+  ['Undead', 25, 25],
+  ['Zombie', 40, 10],
+];
+
 test('should create array usersNames for seven names', () => {
   const result = createUsers();
-  const expected = [
-    {
-      name: 'Bowerman',
-      type: 'Bowerman',
-      health: 100,
-      level: 1,
-      attack: 25,
-      defence: 25,
-    },
-    {
-      name: 'Swordsman',
-      type: 'Swordsman',
-      health: 100,
-      level: 1,
-      attack: 40,
-      defence: 10,
-    },
-    {
-      name: 'Magician',
-      type: 'Magician',
-      health: 100,
-      level: 1,
-      attack: 10,
-      defence: 40,
-    },
-    {
-      name: 'Daemon',
-      type: 'Daemon',
-      health: 100,
-      level: 1,
-      attack: 10,
-      defence: 40,
-    },
-    {
-      name: 'Undead',
-      type: 'Undead',
-      health: 100,
-      level: 1,
-      attack: 25,
-      defence: 25,
-    },
-    {
-      name: 'Zombie',
-      type: 'Zombie',
-      health: 100,
-      level: 1,
-      attack: 40,
-      defence: 10,
-    },
-  ];
+
+  const expected = types.map(([type, attack, defence]) => ({
+    name: type,
+    type,
+    health: 100,
+    level: 1,
+    attack,
+    defence,
+  }));
 
   expect(result).toEqual(expected);
 });
