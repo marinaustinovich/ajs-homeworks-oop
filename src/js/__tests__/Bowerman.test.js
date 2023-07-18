@@ -1,4 +1,4 @@
-import Bowerman from '../Bowmanv';
+import Bowerman from '../Bowerman';
 
 test('should create Character for type Bowerman', () => {
   const result = new Bowerman('Bowerman');
