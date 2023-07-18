@@ -5,4 +5,3 @@ export default class Bowerman extends Character {
     super(name, 'Bowerman', 25, 25);
   }
 }
-

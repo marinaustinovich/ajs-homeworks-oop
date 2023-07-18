@@ -5,4 +5,3 @@ export default class Undead extends Character {
     super(name, 'Undead', 25, 25);
   }
 }
-

@@ -5,4 +5,3 @@ export default class Swordsman extends Character {
     super(name, 'Swordsman', 40, 10);
   }
 }
-

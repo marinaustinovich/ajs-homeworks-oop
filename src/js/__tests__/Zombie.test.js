@@ -12,4 +12,3 @@ test('should create Character for type Zombie', () => {
     defence: 10,
   });
 });
-

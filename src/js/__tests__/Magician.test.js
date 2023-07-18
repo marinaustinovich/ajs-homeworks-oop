@@ -12,4 +12,3 @@ test('should create Magician for type "Magician"', () => {
     defence: 40,
   });
 });
-

@@ -5,4 +5,3 @@ export default class Zombie extends Character {
     super(name, 'Zombie', 40, 10);
   }
 }
-
