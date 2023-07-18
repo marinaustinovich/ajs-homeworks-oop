@@ -12,3 +12,4 @@ test('should create Daemon for name "Daemon"', () => {
     defence: 40,
   });
 });
+

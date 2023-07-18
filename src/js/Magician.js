@@ -5,3 +5,4 @@ export default class Magician extends Character {
     super(name, 'Magician', 10, 40);
   }
 }
+

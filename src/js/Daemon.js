@@ -5,3 +5,4 @@ export default class Daemon extends Character {
     super(name, 'Daemon', 10, 40);
   }
 }
+

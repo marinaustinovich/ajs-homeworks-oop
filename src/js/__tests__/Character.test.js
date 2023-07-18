@@ -1,5 +1,19 @@
 import Character from '../Character';
 
+// Наборы недействительных параметров
+const invalidParams = [
+  [150, 'Bowerman', 25, 25],
+  ['A', 'Bowerman', 25, 25],
+  ['ElevenLetters', 'Bowerman', 25, 25],
+  ['Bowerman', 'Bo', 25, 25],
+  ['Bowerman', undefined, 25, 25],
+  ['Bowerman', 150, 25, 25],
+];
+
+test.each(invalidParams)('should throw Error for invalid parameters %p', (name, type, attack, defence) => {
+  expect(() => new Character(name, type, attack, defence)).toThrow('Передаются некорректные значения');
+});
+
 test('should create Character for name "String"', () => {
   const result = new Character('String', 'Bowerman', 25, 25);
 
@@ -11,30 +25,6 @@ test('should create Character for name "String"', () => {
     attack: 25,
     defence: 25,
   });
-});
-
-test('should be Error for name "NotString"', () => {
-  expect(() => new Character(150, 'Bowerman', 25, 25)).toThrow('Передаются некорректные значения');
-});
-
-test('should be Error for too little name "A"', () => {
-  expect(() => new Character('A', 'Bowerman', 25, 25)).toThrow('Передаются некорректные значения');
-});
-
-test('should be Error for too long name "ElevenLetters"', () => {
-  expect(() => new Character('ElevenLetters', 'Bowerman', 25, 25)).toThrow('Передаются некорректные значения');
-});
-
-test('should create Character for invalid type', () => {
-  expect(() => new Character(150, 'Bo', 25, 25)).toThrow('Передаются некорректные значения');
-});
-
-test('should be Error for the type "undefined"', () => {
-  expect(() => new Character('Bowerman', undefined, 25, 25)).toThrow('Передаются некорректные значения');
-});
-
-test('should be Error for the type "Number"', () => {
-  expect(() => new Character('Bowerman', 150, 25, 25)).toThrow('Передаются некорректные значения');
 });
 
 test('should be Error for health <= 0 and level up', () => {
@@ -53,7 +43,7 @@ test('should be Error for health <= 0 and damage', () => {
   }).toThrow('Нельзя повысить уровень умершего');
 });
 
-test('should level, attack, defence, health  up to 2, 30, 30, 100', () => {
+test('should level, attack, defence, health up to 2, 30, 30, 100', () => {
   const user = new Character('String', 'Bowerman', 25, 25);
   user.levelUp();
 
@@ -67,7 +57,7 @@ test('should level, attack, defence, health  up to 2, 30, 30, 100', () => {
   });
 });
 
-test('should health  down to 97', () => {
+test('should health down to 97', () => {
   const user = new Character('String', 'Bowerman', 25, 25);
   user.damage(4);
 

@@ -12,3 +12,4 @@ test('should create Character for type Bowerman', () => {
     defence: 25,
   });
 });
+
