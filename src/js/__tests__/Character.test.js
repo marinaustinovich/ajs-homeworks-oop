@@ -2,16 +2,16 @@ import Character from '../Character';
 
 // Наборы недействительных параметров
 const invalidParams = [
-  [150, 'Bowerman', 25, 25],
-  ['A', 'Bowerman', 25, 25],
-  ['ElevenLetters', 'Bowerman', 25, 25],
-  ['Bowerman', 'Bo', 25, 25],
-  ['Bowerman', undefined, 25, 25],
-  ['Bowerman', 150, 25, 25],
+  [150, 'Bowerman', 25, 25, 'Передано некорректное значение имени персонажа'],
+  ['A', 'Bowerman', 25, 25, 'Передано некорректное значение имени персонажа'],
+  ['ElevenLetters', 'Bowerman', 25, 25, 'Передано некорректное значение имени персонажа'],
+  ['Bowerman', 'Bo', 25, 25, 'Передано некорректное значение типа персонажа'],
+  ['Bowerman', undefined, 25, 25, 'Передано некорректное значение типа персонажа'],
+  ['Bowerman', 150, 25, 25, 'Передано некорректное значение типа персонажа'],
 ];
 
-test.each(invalidParams)('should throw Error for invalid parameters %p', (name, type, attack, defence) => {
-  expect(() => new Character(name, type, attack, defence)).toThrow('Передаются некорректные значения');
+test.each(invalidParams)('should throw Error for invalid parameters %p', (name, type, attack, defence, errorMessage) => {
+  expect(() => new Character(name, type, attack, defence)).toThrow(errorMessage);
 });
 
 test('should create Character for name "String"', () => {
@@ -35,12 +35,11 @@ test('should be Error for health <= 0 and level up', () => {
   }).toThrow('Нельзя повысить уровень умершего');
 });
 
-test('should be Error for health <= 0 and damage', () => {
-  expect(() => {
-    const bowerman = new Character('Bowerman', 'Bowerman', 25, 25);
-    bowerman.damage(135); // health drops to 0
-    bowerman.damage(1);
-  }).toThrow('Нельзя повысить уровень умершего');
+test('should not decrease health when the character is already dead', () => {
+  const deadBowerman = new Character('Bowerman', 'Bowerman', 25, 25);
+  deadBowerman.health = 0; // explicitly set the character's health to 0
+  deadBowerman.damage(50);
+  expect(deadBowerman.health).toBe(0);
 });
 
 test('should level, attack, defence, health up to 2, 30, 30, 100', () => {
